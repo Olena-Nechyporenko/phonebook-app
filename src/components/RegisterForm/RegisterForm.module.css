@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.formLabel {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.formInput {
+  max-width: 200px;
+  height: 25px;
+  border-radius: 5px;
+}
+.formBtn {
+  max-width: 100px;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.error {
+  font-size: 15px;
+  width: 300px;
+  color: red;
+}

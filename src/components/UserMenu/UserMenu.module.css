@@ -1,0 +1,9 @@
+.wrapper {
+  display: flex;
+}
+.button {
+  height: 20px;
+}
+.welcome {
+  margin: 0;
+}
