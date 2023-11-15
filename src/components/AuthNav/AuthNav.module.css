@@ -1,0 +1,14 @@
+.auth {
+  display: flex;
+  gap: 15px;
+  padding: 20px 0;
+}
+.link {
+  font-size: 25px;
+  font-weight: 500;
+  color: #6938ce;
+}
+.link:hover,
+.link:focus {
+  color: #b18bff;
+}

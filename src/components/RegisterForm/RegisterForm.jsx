@@ -25,47 +25,54 @@ export const RegisterForm = () => {
     resetForm();
   };
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-    >
-      <Form className={css.form} autoComplete="off">
-        <label className={css.formLabel} htmlFor="username">
-          Username
-          <Field
-            className={css.formInput}
-            type="text"
-            name="username"
-            required
-          />
-          <span className={css.error}>
-            <ErrorMessage name="username" />
-          </span>
-        </label>
-        <label className={css.formLabel} htmlFor="email">
-          Email
-          <Field className={css.formInput} type="email" name="email" required />
-          <span className={css.error}>
-            <ErrorMessage name="email" />
-          </span>
-        </label>
-        <label className={css.formLabel} htmlFor="password">
-          Password
-          <Field
-            className={css.formInput}
-            type="password"
-            name="password"
-            required
-          />
-          <span className={css.error}>
-            <ErrorMessage name="password" />
-          </span>
-        </label>
-        <button className={css.formBtn} type="submit">
-          Register
-        </button>
-      </Form>
-    </Formik>
+    <div className={css.formWrapper}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.form} autoComplete="off">
+          <label className={css.formLabel} htmlFor="username">
+            Username
+            <Field
+              className={css.formInput}
+              type="text"
+              name="username"
+              required
+            />
+            <span className={css.error}>
+              <ErrorMessage name="username" />
+            </span>
+          </label>
+          <label className={css.formLabel} htmlFor="email">
+            Email
+            <Field
+              className={css.formInput}
+              type="email"
+              name="email"
+              required
+            />
+            <span className={css.error}>
+              <ErrorMessage name="email" />
+            </span>
+          </label>
+          <label className={css.formLabel} htmlFor="password">
+            Password
+            <Field
+              className={css.formInput}
+              type="password"
+              name="password"
+              required
+            />
+            <span className={css.error}>
+              <ErrorMessage name="password" />
+            </span>
+          </label>
+          <button className={css.formBtn} type="submit">
+            Register
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };

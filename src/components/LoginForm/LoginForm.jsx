@@ -23,35 +23,42 @@ export const LoginForm = () => {
     resetForm();
   };
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-    >
-      <Form className={css.form} autoComplete="off">
-        <label className={css.formLabel} htmlFor="email">
-          Email
-          <Field className={css.formInput} type="email" name="email" required />
-          <span className={css.error}>
-            <ErrorMessage name="email" />
-          </span>
-        </label>
-        <label className={css.formLabel} htmlFor="password">
-          Password
-          <Field
-            className={css.formInput}
-            type="password"
-            name="password"
-            required
-          />
-          <span className={css.error}>
-            <ErrorMessage name="password" />
-          </span>
-        </label>
-        <button className={css.formBtn} type="submit">
-          Log In
-        </button>
-      </Form>
-    </Formik>
+    <div className={css.formWrapper}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.form} autoComplete="off">
+          <label className={css.formLabel} htmlFor="email">
+            Email
+            <Field
+              className={css.formInput}
+              type="email"
+              name="email"
+              required
+            />
+            <span className={css.error}>
+              <ErrorMessage name="email" />
+            </span>
+          </label>
+          <label className={css.formLabel} htmlFor="password">
+            Password
+            <Field
+              className={css.formInput}
+              type="password"
+              name="password"
+              required
+            />
+            <span className={css.error}>
+              <ErrorMessage name="password" />
+            </span>
+          </label>
+          <button type="submit" className={css.formBtn}>
+            Log In
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };

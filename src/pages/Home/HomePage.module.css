@@ -1,5 +1,11 @@
 .home {
   text-align: center;
-  padding-top: 60px;
+  padding-top: 100px;
   font-size: 30px;
+  height: 100vh;
+}
+.text {
+  font-size: 50px;
+  color: #9b5cff;
+  text-shadow: -1px -1px 1px #6938ce, 2px 2px 1px #363636;
 }
