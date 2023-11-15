@@ -12,6 +12,7 @@ export function Filter() {
   }
   return (
     <div>
+      <h2 className="contactsTitle">Contacts</h2>
       <p className={css.filter}>Find contacts by name</p>
       <input
         className={css.filterInput}

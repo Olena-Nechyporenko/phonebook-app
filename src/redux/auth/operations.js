@@ -25,14 +25,11 @@ export const userRegister = createAsyncThunk(
 
 export const userLogin = createAsyncThunk(
   'user/loginUser',
-  async (user, { rejectWithValue }) => {
+  async (userData, { rejectWithValue }) => {
     try {
-      const loginUser = await axios.post(`${BASE_URL}/users/login`, {
-        email: user.email,
-        password: user.password,
-      });
+      const loginUser = await axios.post('/users/login', userData);
       setAuthHeader(loginUser.data.token);
-      return loginUser;
+      return loginUser.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }
@@ -43,7 +40,7 @@ export const userLogout = createAsyncThunk(
   'user/logoutUser',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post(`${BASE_URL}/users/logout`);
+      await axios.post('/users/logout');
       clearAuthHeader();
     } catch (e) {
       return rejectWithValue(e.message);
@@ -61,11 +58,10 @@ export const refreshUser = createAsyncThunk(
       // If there is no token, exit without performing any request
       return rejectWithValue('Unable to fetch user');
     }
-
     try {
       setAuthHeader(persistedToken);
-      const refreshedUser = await axios.get(`${BASE_URL}/users/current`);
-      return refreshUser.data;
+      const refreshedUser = await axios.get('/users/current');
+      return refreshedUser.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }

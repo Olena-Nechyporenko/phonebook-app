@@ -1,8 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import css from './RegisterForm.module.css';
 import { useDispatch } from 'react-redux';
 import { userRegister } from 'redux/auth/operations';
+import * as Yup from 'yup';
+import css from './RegisterForm.module.css';
 
 const initialValues = { username: '', email: '', password: '' };
 const schema = Yup.object().shape({

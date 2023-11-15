@@ -1,4 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { useDispatch } from 'react-redux';
+import { userLogin } from 'redux/auth/operations';
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
 
@@ -9,11 +11,22 @@ const schema = Yup.object().shape({
 });
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(
+      userLogin({
+        email: values.email,
+        password: values.password,
+      })
+    );
+    resetForm();
+  };
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={schema}
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <Form className={css.form} autoComplete="off">
         <label className={css.formLabel} htmlFor="email">

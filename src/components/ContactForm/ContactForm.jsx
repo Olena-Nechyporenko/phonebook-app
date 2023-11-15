@@ -1,5 +1,4 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
@@ -33,46 +32,47 @@ export const ContactForm = () => {
     }
     dispatch(
       addContact({
-        createdAt: new Date(),
         name: values.name,
-        phone: values.number,
-        id: nanoid(),
+        number: values.number,
       })
     );
     resetForm();
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={schema}
-      onSubmit={handleSubmit}
-    >
-      <Form className={css.form} autoComplete="off">
-        <label className={css.formLabel} htmlFor="name">
-          Name
-          <Field className={css.formInput} type="text" name="name" required />
-          <span className={css.error}>
-            <ErrorMessage name="name" />
-          </span>
-        </label>
-        <label className={css.formLabel} htmlFor="number">
-          Number
-          <Field
-            className={css.formInput}
-            type="tel"
-            name="number"
-            placeholder="+380"
-            required
-          />
-          <span className={css.error}>
-            <ErrorMessage name="number" />
-          </span>
-        </label>
-        <button className={css.formBtn} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+    <>
+      <h1 className="formTitle">Phonebook</h1>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={schema}
+        onSubmit={handleSubmit}
+      >
+        <Form className={css.form} autoComplete="off">
+          <label className={css.formLabel} htmlFor="name">
+            Name
+            <Field className={css.formInput} type="text" name="name" required />
+            <span className={css.error}>
+              <ErrorMessage name="name" />
+            </span>
+          </label>
+          <label className={css.formLabel} htmlFor="number">
+            Number
+            <Field
+              className={css.formInput}
+              type="tel"
+              name="number"
+              placeholder="+380"
+              required
+            />
+            <span className={css.error}>
+              <ErrorMessage name="number" />
+            </span>
+          </label>
+          <button className={css.formBtn} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </Formik>
+    </>
   );
 };
