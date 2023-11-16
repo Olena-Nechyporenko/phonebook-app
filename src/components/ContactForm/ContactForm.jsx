@@ -40,8 +40,8 @@ export const ContactForm = () => {
   };
 
   return (
-    <>
-      <h1 className="formTitle">Phonebook</h1>
+    <div className={css.contactFormWrap}>
+      <h1 className={css.formTitle}>Phonebook</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -73,6 +73,6 @@ export const ContactForm = () => {
           </button>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 };

@@ -1,8 +1,5 @@
 @import-normalize;
 
-html {
-  height: 100%;
-}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,7 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-image: linear-gradient(145deg, #fae6fc, #e1c3ff, #fffec3, #c7c3ff);
-  min-height: 100%;
+  background-size: cover;
 }
 
 code {
@@ -22,12 +19,6 @@ code {
 .container {
   padding-left: 20px;
   padding-bottom: 30px;
-}
-.formTitle {
-  font-size: 40px;
-}
-.contactsTitle {
-  font-size: 30px;
 }
 ul {
   padding-left: 20px;

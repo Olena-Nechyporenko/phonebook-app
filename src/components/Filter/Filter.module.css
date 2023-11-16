@@ -1,8 +1,36 @@
-.filter {
+.filterWrap {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.contactsTitle {
+  margin: 0;
+  text-align: center;
+  font-size: 40px;
+  color: #9b5cff;
+  text-shadow: -1px -1px 1px #6938ce, 2px 2px 1px #363636;
+}
+.inputWrap {
+  padding: 20px;
+}
+.filterText {
+  margin: 0;
+  margin-bottom: 10px;
   font-size: 20px;
+  color: #6938ce;
 }
 .filterInput {
-  width: 200px;
-  height: 25px;
+  width: 100%;
   border-radius: 5px;
+  font-size: 20px;
+  padding: 0 5px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.filterInput:focus {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 8px;
 }
