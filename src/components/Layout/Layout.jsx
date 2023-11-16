@@ -7,7 +7,7 @@ export const Layout = () => {
   return (
     <div>
       <AppBar />
-      <Suspense fallback={'LOADING PAGE...'}>
+      <Suspense fallback={<span className={css.loading}>Loading page...</span>}>
         <main className={css.layout}>
           <Outlet />
         </main>
