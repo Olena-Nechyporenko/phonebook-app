@@ -1,10 +1,10 @@
 .nav {
   padding: 20px 0;
   display: flex;
-  gap: 15px;
+  gap: 10px;
 }
 .link {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 500;
   color: #6938ce;
   position: relative;
@@ -22,7 +22,17 @@
     border-radius: 2px;
   }
 }
+
 .link:hover,
 .link:focus {
   color: #b18bff;
+}
+
+@media screen and (min-width: 768px) {
+  .nav {
+    gap: 15px;
+  }
+  .link {
+    font-size: 25px;
+  }
 }

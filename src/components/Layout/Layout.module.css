@@ -1,8 +1,16 @@
 .layout {
+  padding: 0 10px;
   padding-bottom: 20px;
 }
 .loading {
   padding-top: 30px;
   font-size: 30px;
   height: 100vh;
+}
+
+@media screen and (min-width: 768px) {
+  .layout {
+    padding: 0 20px;
+    padding-bottom: 20px;
+  }
 }

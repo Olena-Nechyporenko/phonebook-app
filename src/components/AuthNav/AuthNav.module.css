@@ -1,10 +1,11 @@
 .auth {
   display: flex;
-  gap: 15px;
+  gap: 10px;
   padding: 20px 0;
 }
+
 .link {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 500;
   color: #6938ce;
   position: relative;
@@ -25,4 +26,13 @@
 .link:hover,
 .link:focus {
   color: #b18bff;
+}
+
+@media screen and (min-width: 768px) {
+  .auth {
+    gap: 15px;
+  }
+  .link {
+    font-size: 25px;
+  }
 }
