@@ -51,4 +51,4 @@ After installing the dependencies, start the development server.
 npm start
 ```
 
-### 4. Open [this link]() to view it in the browser.
+### 4. Open [this link](https://olena-nechyporenko.github.io/phonebook-app/) to view it in the browser.
