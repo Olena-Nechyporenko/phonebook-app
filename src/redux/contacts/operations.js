@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+axios.defaults.baseURL = 'https://contact-book-express-js.onrender.com/api/';
+
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchAllContacts',
   async (_, { rejectWithValue }) => {

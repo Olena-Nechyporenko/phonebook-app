@@ -1,7 +1,12 @@
-.layout {
-  padding: 0 10px;
-  padding-bottom: 20px;
+.container {
+  max-width: 375px;
+  margin: 0 auto;
 }
+
+.main {
+  margin: 0 auto;
+}
+
 .loading {
   padding-top: 30px;
   font-size: 30px;
@@ -9,8 +14,21 @@
 }
 
 @media screen and (min-width: 768px) {
-  .layout {
-    padding: 0 20px;
-    padding-bottom: 20px;
+  .container {
+    max-width: 768px;
+  }
+
+  .main {
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .main {
+    margin: 0 auto;
   }
 }

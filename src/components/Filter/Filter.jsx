@@ -22,7 +22,6 @@ export function Filter() {
   }
   return (
     <div className={css.filterWrap}>
-      <h2 className={css.contactsTitle}>Contacts</h2>
       <div className={css.inputWrap}>
         <p className={css.filterText}>Find contacts by name</p>
         <input

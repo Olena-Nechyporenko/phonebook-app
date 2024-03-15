@@ -30,7 +30,7 @@
 
 @media screen and (min-width: 768px) {
   .auth {
-    gap: 15px;
+    gap: 20px;
   }
   .link {
     font-size: 25px;

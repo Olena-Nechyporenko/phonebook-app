@@ -1,12 +1,16 @@
 .formWrapper {
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 100px;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: 498px;
+  background-color: #181818;
+  border-radius: 0 14px 14px 0;
+  border-top: 1px solid rgba(105, 56, 206, 0.59);
+  border-right: 1px solid rgba(105, 56, 206, 0.59);
+  border-bottom: 1px solid rgba(105, 56, 206, 0.59);
 }
 .form {
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,40 +18,46 @@
 }
 .formLabel {
   width: 100%;
-  font-size: 20px;
+  font-size: 25px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  color: #6938ce;
+  color: rgba(200, 134, 255, 0.66);
 }
 .formInput {
   font-size: 20px;
   padding: 0 5px;
-  width: 100%;
-  height: 30px;
+  width: 300px;
+  height: 40px;
+  color: #ffffff;
   border-radius: 5px;
-  background-color: transparent;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 134, 255, 0.66) 31%,
+    rgba(105, 56, 206, 0.59) 100%
+  );
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .formInput:focus {
   outline: none;
-  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 8px;
 }
 .formBtn {
   margin-top: 10px;
-  padding: 6px 10px;
+  padding: 8px 10px;
   width: 150px;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: 500;
   border-radius: 5px;
   border: none;
-  color: #6938ce;
-  background-color: transparent;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  color: #f4efff;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 134, 255, 0.66) 31%,
+    rgba(105, 56, 206, 0.59) 100%
+  );
+
   cursor: pointer;
-  transition: font-weight 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 300ms linear;
 }
 .formBtn:hover,
 .formBtn:focus {

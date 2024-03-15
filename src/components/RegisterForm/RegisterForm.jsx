@@ -17,7 +17,6 @@ export const RegisterForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     dispatch(
       userRegister({
-        name: values.username,
         email: values.email,
         password: values.password,
       })
@@ -32,18 +31,6 @@ export const RegisterForm = () => {
         onSubmit={handleSubmit}
       >
         <Form className={css.form} autoComplete="off">
-          <label className={css.formLabel} htmlFor="username">
-            Username
-            <Field
-              className={css.formInput}
-              type="text"
-              name="username"
-              required
-            />
-            <span className={css.error}>
-              <ErrorMessage name="username" />
-            </span>
-          </label>
           <label className={css.formLabel} htmlFor="email">
             Email
             <Field

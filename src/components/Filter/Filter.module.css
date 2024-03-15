@@ -1,24 +1,16 @@
 .filterWrap {
   width: 300px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
 }
-.contactsTitle {
-  margin: 0;
-  text-align: center;
-  font-size: 40px;
-  color: #9b5cff;
-  text-shadow: -1px -1px 1px #6938ce, 2px 2px 1px #363636;
-}
 .inputWrap {
-  padding: 20px;
+  padding: 10px 15px 0 15px;
 }
 .filterText {
+  font-weight: 500;
   margin: 0;
   margin-bottom: 10px;
   font-size: 20px;
-  color: #6938ce;
+  color: rgba(200, 134, 255, 0.66);
 }
 .filterInput {
   width: 100%;
@@ -26,11 +18,14 @@
   font-size: 20px;
   padding: 0 5px;
   height: 30px;
-  background-color: transparent;
+  color: white;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 134, 255, 0.66) 31%,
+    rgba(105, 56, 206, 0.59) 100%
+  );
   border: none;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .filterInput:focus {
   outline: none;
-  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 8px;
 }

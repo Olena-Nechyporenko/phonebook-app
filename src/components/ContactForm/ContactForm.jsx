@@ -6,13 +6,16 @@ import Notiflix from 'notiflix';
 import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
+
 // init.values and schema for Formik
-const initialValues = { name: '', number: '' };
+const initialValues = { name: '', phone: '', email: '' };
 const schema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Must be at least 2 characters long')
     .max(70, 'Must be no more than 70 characters long'),
-  number: Yup.number(),
+  email: Yup.string().matches(emailRegex, 'Invalid email format').required(),
+  phone: Yup.number().required().typeError('field can only contain numbers'),
 });
 
 export const ContactForm = () => {
@@ -33,7 +36,8 @@ export const ContactForm = () => {
     dispatch(
       addContact({
         name: values.name,
-        number: values.number,
+        phone: values.phone.toString(),
+        email: values.email,
       })
     );
     resetForm();
@@ -41,7 +45,6 @@ export const ContactForm = () => {
 
   return (
     <div className={css.contactFormWrap}>
-      <h1 className={css.formTitle}>Phonebook</h1>
       <Formik
         initialValues={initialValues}
         validationSchema={schema}
@@ -55,17 +58,30 @@ export const ContactForm = () => {
               <ErrorMessage name="name" />
             </span>
           </label>
-          <label className={css.formLabel} htmlFor="number">
+          <label className={css.formLabel} htmlFor="phone">
             Number
             <Field
               className={css.formInput}
-              type="tel"
-              name="number"
-              placeholder="+380"
+              type="number"
+              name="phone"
+              placeholder="097XXXXXXX"
               required
             />
             <span className={css.error}>
-              <ErrorMessage name="number" />
+              <ErrorMessage name="phone" />
+            </span>
+          </label>
+          <label className={css.formLabel} htmlFor="email">
+            Email
+            <Field
+              className={css.formInput}
+              type="text"
+              name="email"
+              placeholder="example@gmail.com"
+              required
+            />
+            <span className={css.error}>
+              <ErrorMessage name="email" />
             </span>
           </label>
           <button className={css.formBtn} type="submit">

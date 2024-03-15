@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 500px;
+  color: #f4efff;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 134, 255, 0.66) 31%,
+    rgba(105, 56, 206, 0.59) 100%
+  );
+  border-radius: 14px 0 0 14px;
+}

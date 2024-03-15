@@ -8,30 +8,29 @@
   display: none;
 }
 .button {
-  height: 25px;
-  width: 80px;
-  padding: 5px 0;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  height: 29px;
+  width: 90px;
+  font-size: 25px;
+  font-weight: 500;
   border: none;
   color: #6938ce;
   background-color: transparent;
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   cursor: pointer;
+
+  transition: all 300ms linear;
 }
 .button:hover,
 .button:focus {
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
-    rgba(14, 30, 37, 0.7) 0px 2px 16px 0px;
+  color: #b18bff;
 }
 
 @media screen and (min-width: 768px) {
   .userEmail {
     display: block;
-    margin: 0;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
     color: #6938ce;
   }

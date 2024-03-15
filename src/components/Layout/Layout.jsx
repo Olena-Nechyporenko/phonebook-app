@@ -5,10 +5,10 @@ import css from './Layout.module.css';
 
 export const Layout = () => {
   return (
-    <div>
+    <div className={css.container}>
       <AppBar />
       <Suspense fallback={<span className={css.loading}>Loading page...</span>}>
-        <main className={css.layout}>
+        <main className={css.main}>
           <Outlet />
         </main>
       </Suspense>

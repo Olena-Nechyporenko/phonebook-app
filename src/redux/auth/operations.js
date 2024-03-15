@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://contact-book-express-js.onrender.com/api/';
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -12,7 +12,7 @@ export const userRegister = createAsyncThunk(
   'user/registerUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const newUser = await axios.post('/users/signup', userData);
+      const newUser = await axios.post('/users/register', userData);
       setAuthHeader(newUser.data.token);
       return newUser.data;
     } catch (e) {
