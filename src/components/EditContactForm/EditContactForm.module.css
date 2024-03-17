@@ -1,0 +1,72 @@
+.contactFormWrap {
+  width: 300px;
+}
+.formTitle {
+  margin: 0;
+  text-align: center;
+  font-size: 40px;
+  color: #9b5cff;
+  text-shadow: -1px -1px 1px #6938ce, 2px 2px 1px #363636;
+}
+.form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.formLabel {
+  width: 100%;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(200, 134, 255, 0.66);
+}
+.formInput {
+  font-size: 20px;
+  padding: 0 5px;
+  width: 300px;
+  height: 40px;
+  color: #ffffff;
+  border-radius: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 134, 255, 0.66) 31%,
+    rgba(105, 56, 206, 0.59) 100%
+  );
+  border: none;
+}
+.formInput:focus {
+  outline: none;
+  box-shadow: rgba(0, 0, 0, 0.5) 3px 3px 8px;
+}
+
+.formBtn {
+  margin-top: 10px;
+  padding: 8px 10px;
+  width: 150px;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 5px;
+  border: none;
+  color: #f4efff;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 134, 255, 0.66) 31%,
+    rgba(105, 56, 206, 0.59) 100%
+  );
+
+  cursor: pointer;
+  transition: all 300ms linear;
+}
+.formBtn:hover,
+.formBtn:focus {
+  font-weight: 600;
+}
+
+.error {
+  font-size: 15px;
+  width: 300px;
+  color: red;
+}

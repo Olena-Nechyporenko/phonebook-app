@@ -1,16 +1,19 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/operations';
-import { selectFilteredContacts } from 'redux/contacts/selectors';
-import { selectContacts } from 'redux/contacts/selectors';
 import { MdDelete } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
+import { SlPencil } from 'react-icons/sl';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteContact, getContactById } from 'redux/contacts/operations';
+import { selectFilteredContacts } from 'redux/contacts/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import css from './ContactList.module.css';
 import { useState } from 'react';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
 import img from './contact.jpg';
+import { EditContactModal } from 'components/EditContactModal/EditContactModal';
 
 export function ContactList() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenAddModal, setIsOpenAddModal] = useState(false);
+  const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const filteredContacts = useSelector(selectFilteredContacts);
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -19,8 +22,12 @@ export function ContactList() {
     dispatch(deleteContact(id));
   };
 
-  const handleOpenModal = () => {
-    setIsOpen(!isOpen);
+  const handleOpenAddModal = () => {
+    setIsOpenAddModal(!isOpenAddModal);
+  };
+  const handleOpenEditModal = id => {
+    setIsOpenEditModal(!isOpenEditModal);
+    dispatch(getContactById(id));
   };
 
   return (
@@ -31,7 +38,7 @@ export function ContactList() {
             You have no contacts in the phonebook yet
           </p>
           <button
-            onClick={handleOpenModal}
+            onClick={handleOpenAddModal}
             className={css.addFirstContact}
             type="button"
           >
@@ -59,7 +66,17 @@ export function ContactList() {
               </ul>
 
               <ul className={css.iconList}>
-                <li>
+                <li className={css.iconItem}>
+                  <button
+                    className={css.editBtn}
+                    onClick={() => handleOpenEditModal(_id)}
+                    name="edit"
+                    type="button"
+                  >
+                    <SlPencil className={css.editIcon} />
+                  </button>
+                </li>
+                <li className={css.iconItem}>
                   <button
                     className={css.favoriteBtn}
                     name="favorite"
@@ -68,7 +85,7 @@ export function ContactList() {
                     <FaStar className={css.starIcon} />
                   </button>
                 </li>
-                <li>
+                <li className={css.iconItem}>
                   <button
                     className={css.deleteBtn}
                     onClick={() => handleDeleteContact(_id)}
@@ -79,12 +96,17 @@ export function ContactList() {
                   </button>
                 </li>
               </ul>
+              {isOpenEditModal && (
+                <EditContactModal
+                  contactId={_id}
+                  onClose={handleOpenEditModal}
+                />
+              )}
             </li>
           ))}
         </ul>
       )}
-
-      {isOpen && <AddContactModal onClose={handleOpenModal} />}
+      {isOpenAddModal && <AddContactModal onClose={handleOpenAddModal} />}
     </>
   );
 }

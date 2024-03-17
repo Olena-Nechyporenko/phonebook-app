@@ -15,6 +15,18 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
+export const getContactById = createAsyncThunk(
+  'contacts/getContactById',
+  async (contactId, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`/contacts/${contactId}`);
+      return response.data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contactData, { rejectWithValue }) => {

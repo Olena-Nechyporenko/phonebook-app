@@ -3,6 +3,7 @@ import {
   fetchContacts,
   addContact,
   deleteContact,
+  getContactById,
 } from 'redux/contacts/operations';
 
 const handlePending = state => {
@@ -16,6 +17,7 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
     contacts: {
+      currentContact: {},
       items: [],
       isLoading: false,
       error: null,
@@ -33,11 +35,13 @@ const contactsSlice = createSlice({
     [fetchContacts.pending]: handlePending,
     [addContact.pending]: handlePending,
     [deleteContact.pending]: handlePending,
+    [getContactById]: handlePending,
 
     // rejected
     [fetchContacts.rejected]: handleRejected,
     [addContact.rejected]: handleRejected,
     [deleteContact.rejected]: handleRejected,
+    [getContactById.rejected]: handleRejected,
 
     // fulfilled
     [fetchContacts.fulfilled](state, action) {
@@ -56,6 +60,11 @@ const contactsSlice = createSlice({
       state.contacts.items = state.contacts.items.filter(
         ({ _id }) => _id !== action.payload._id
       );
+    },
+    [getContactById.fulfilled](state, action) {
+      state.contacts.isLoading = false;
+      state.contacts.error = null;
+      state.contacts.currentContact = action.payload;
     },
   },
 });
