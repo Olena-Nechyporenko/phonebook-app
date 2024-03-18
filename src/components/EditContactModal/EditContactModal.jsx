@@ -4,7 +4,7 @@ import css from './EditContactModal.module.css';
 import { useEffect } from 'react';
 import { EditContactForm } from 'components/EditContactForm/EditContactForm';
 
-export function EditContactModal({ onClose, contactId }) {
+export function EditContactModal({ onClose, contactInfo }) {
   useEffect(() => {
     const handleCloseOnKeydown = e => {
       if (e.key === 'Escape') {
@@ -34,7 +34,7 @@ export function EditContactModal({ onClose, contactId }) {
           <IoIosContact className={css.iconContact} />
         </div>
 
-        <EditContactForm />
+        <EditContactForm contactInfo={contactInfo} onClose={onClose} />
       </div>
     </div>
   );

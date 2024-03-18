@@ -3,11 +3,12 @@ import { FaStar } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Filter } from 'components/Filter/Filter';
-import { ContactList } from 'components/ContactList/ContactList';
+// import { ContactList } from 'components/ContactList/ContactList';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectError } from 'redux/contacts/selectors';
 import css from './ContactsPage.module.css';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
+import { Link, Outlet } from 'react-router-dom';
 
 export default function ContactsPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -28,15 +29,15 @@ export default function ContactsPage() {
         <ul className={css.list}>
           <li className={css.item}>
             <MdContacts className={css.icon} />
-            <button type="button" className={css.button}>
+            <Link to="all" className={css.button}>
               All Contacts
-            </button>
+            </Link>
           </li>
           <li className={css.item}>
             <FaStar className={css.icon} />
-            <button type="button" className={css.button}>
+            <Link to="favorite" className={css.button}>
               My Favorites
-            </button>
+            </Link>
           </li>
         </ul>
       </aside>
@@ -52,8 +53,8 @@ export default function ContactsPage() {
             Add contact
           </button>
         </div>
-
-        <ContactList />
+        <Outlet />
+        {/* <ContactList /> */}
       </div>
 
       {openModal && <AddContactModal onClose={handleOpenModal} />}

@@ -4,6 +4,8 @@ import {
   addContact,
   deleteContact,
   getContactById,
+  editContact,
+  editContactStatus,
 } from 'redux/contacts/operations';
 
 const handlePending = state => {
@@ -36,12 +38,16 @@ const contactsSlice = createSlice({
     [addContact.pending]: handlePending,
     [deleteContact.pending]: handlePending,
     [getContactById]: handlePending,
+    [editContact]: handlePending,
+    [editContactStatus]: handlePending,
 
     // rejected
     [fetchContacts.rejected]: handleRejected,
     [addContact.rejected]: handleRejected,
     [deleteContact.rejected]: handleRejected,
     [getContactById.rejected]: handleRejected,
+    [editContact.rejected]: handleRejected,
+    [editContactStatus.rejected]: handleRejected,
 
     // fulfilled
     [fetchContacts.fulfilled](state, action) {
@@ -65,6 +71,22 @@ const contactsSlice = createSlice({
       state.contacts.isLoading = false;
       state.contacts.error = null;
       state.contacts.currentContact = action.payload;
+    },
+    [editContact.fulfilled](state, action) {
+      state.contacts.isLoading = false;
+      state.contacts.error = null;
+      const editedContact = state.contacts.items.map(contact =>
+        contact._id === action.payload._id ? action.payload : contact
+      );
+      state.contacts.items = editedContact;
+    },
+    [editContactStatus.fulfilled](state, action) {
+      state.contacts.isLoading = false;
+      state.contacts.error = null;
+      const editedContactStatus = state.contacts.items.map(contact =>
+        contact._id === action.payload._id ? action.payload : contact
+      );
+      state.contacts.items = editedContactStatus;
     },
   },
 });

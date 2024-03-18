@@ -8,14 +8,13 @@ import css from './ContactForm.module.css';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 
-// init.values and schema for Formik
 const initialValues = { name: '', phone: '', email: '' };
 const schema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Must be at least 2 characters long')
-    .max(70, 'Must be no more than 70 characters long'),
+    .max(30, 'Must be no more than 30 characters long'),
   email: Yup.string().matches(emailRegex, 'Invalid email format').required(),
-  phone: Yup.number().required().typeError('field can only contain numbers'),
+  phone: Yup.string().required().typeError('field can only contain numbers'),
 });
 
 export const ContactForm = () => {
@@ -50,7 +49,7 @@ export const ContactForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <Form className={css.form} autoComplete="off">
+        <Form className={css.form}>
           <label className={css.formLabel} htmlFor="name">
             Name
             <Field className={css.formInput} type="text" name="name" required />
@@ -62,7 +61,7 @@ export const ContactForm = () => {
             Number
             <Field
               className={css.formInput}
-              type="number"
+              type="text"
               name="phone"
               placeholder="097XXXXXXX"
               required

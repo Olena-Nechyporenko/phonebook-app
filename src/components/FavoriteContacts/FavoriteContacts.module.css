@@ -118,15 +118,10 @@
 }
 
 .starIcon {
-  fill: white;
+  fill: #f0ff1a;
   width: 35px;
   height: 35px;
   transition: all 300ms linear;
-}
-
-.favoriteBtn:hover .starIcon,
-.favoriteBtn:focus .starIcon {
-  fill: yellow;
 }
 
 .editBtn {
@@ -154,12 +149,12 @@
 }
 
 /* @media screen and (min-width: 768px) {
-  .contactList {
-    width: 500px;
-    padding: 5px 20px;
-    height: 300px;
-    overflow-y: scroll;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-      rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-  }
-} */
+    .contactList {
+      width: 500px;
+      padding: 5px 20px;
+      height: 300px;
+      overflow-y: scroll;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    }
+  } */

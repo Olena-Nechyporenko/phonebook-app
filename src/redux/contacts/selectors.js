@@ -16,3 +16,10 @@ export const selectFilteredContacts = createSelector(
     );
   }
 );
+
+export const selectFavoriteContacts = createSelector(
+  [selectContacts],
+  items => {
+    return items.filter(({ favorite }) => favorite === true);
+  }
+);

@@ -1,48 +1,36 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contacts/operations';
-import { selectContacts, selectCurrentContact } from 'redux/contacts/selectors';
-import Notiflix from 'notiflix';
+import { useDispatch } from 'react-redux';
+import { editContact } from 'redux/contacts/operations';
 import * as Yup from 'yup';
 import css from './EditContactForm.module.css';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 
-// init.values and schema for Formik
-const initialValues = { name: '', phone: '', email: '' };
 const schema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Must be at least 2 characters long')
-    .max(70, 'Must be no more than 70 characters long'),
+    .max(30, 'Must be no more than 30 characters long'),
   email: Yup.string().matches(emailRegex, 'Invalid email format').required(),
-  phone: Yup.number().required().typeError('field can only contain numbers'),
+  phone: Yup.string().required().typeError('field can only contain numbers'),
 });
 
-export const EditContactForm = () => {
+export const EditContactForm = ({ contactInfo, onClose }) => {
+  const { _id, name, phone, email } = contactInfo.currentContact;
+
+  const initialValues = { name: name, phone: phone, email: email };
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const currentContact = useSelector(selectCurrentContact);
-  console.log(currentContact);
+
+  // const cont = useSelector(selectContacts);
+  // console.log(cont);
 
   const handleSubmit = (values, { resetForm }) => {
-    const isInContacts = contacts.find(
-      ({ name }) => name.toLowerCase() === values.name.toLowerCase()
-    );
-    if (isInContacts) {
-      Notiflix.Notify.failure(`${values.name} is already in contacts!`, {
-        position: 'left-top',
-        distance: '10px',
-      });
-      return;
-    }
-    dispatch(
-      addContact({
-        name: values.name,
-        phone: values.phone.toString(),
-        email: values.email,
-      })
-    );
-    resetForm();
+    const editedContact = {
+      name: values.name,
+      phone: values.phone,
+      email: values.email,
+    };
+    dispatch(editContact({ _id, editedContact }));
+    onClose();
   };
 
   return (
@@ -52,10 +40,10 @@ export const EditContactForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        <Form className={css.form} autoComplete="off">
+        <Form className={css.form}>
           <label className={css.formLabel} htmlFor="name">
             Name
-            <Field className={css.formInput} type="text" name="name" required />
+            <Field className={css.formInput} type="text" name="name" />
             <span className={css.error}>
               <ErrorMessage name="name" />
             </span>
@@ -64,10 +52,9 @@ export const EditContactForm = () => {
             Number
             <Field
               className={css.formInput}
-              type="number"
+              type="text"
               name="phone"
               placeholder="097XXXXXXX"
-              required
             />
             <span className={css.error}>
               <ErrorMessage name="phone" />
@@ -80,14 +67,13 @@ export const EditContactForm = () => {
               type="text"
               name="email"
               placeholder="example@gmail.com"
-              required
             />
             <span className={css.error}>
               <ErrorMessage name="email" />
             </span>
           </label>
           <button className={css.formBtn} type="submit">
-            Add contact
+            Edit contact
           </button>
         </Form>
       </Formik>

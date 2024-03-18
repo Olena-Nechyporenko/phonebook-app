@@ -7,6 +7,8 @@ import { useAuth } from 'hooks/useAuth';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRout';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
+import { ContactList } from './ContactList/ContactList';
+import { FavoriteContacts } from './FavoriteContacts/FavoriteContacts';
 const HomePage = lazy(() => import('pages/Home/HomePage'));
 const ContactsPage = lazy(() => import('pages/Contacts/ContactsPage'));
 const LoginPage = lazy(() => import('pages/Login/LoginPage'));
@@ -47,7 +49,10 @@ export const App = () => {
           element={
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
-        />
+        >
+          <Route path="all" element={<ContactList />} />
+          <Route path="favorite" element={<FavoriteContacts />} />
+        </Route>
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>

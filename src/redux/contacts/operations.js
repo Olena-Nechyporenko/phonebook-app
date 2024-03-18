@@ -49,3 +49,33 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+
+export const editContact = createAsyncThunk(
+  'contacts/editContact',
+  async (contactData, { rejectWithValue }) => {
+    const { _id, editedContact } = contactData;
+    try {
+      const response = await axios.put(`/contacts/${_id}`, editedContact);
+      return response.data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const editContactStatus = createAsyncThunk(
+  'contacts/editContactStatus',
+  async (contactData, { rejectWithValue }) => {
+    console.log(contactData);
+    const { _id, editedContactStatus } = contactData;
+    try {
+      const response = await axios.patch(
+        `/contacts/${_id}/favorite`,
+        editedContactStatus
+      );
+      return response.data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
