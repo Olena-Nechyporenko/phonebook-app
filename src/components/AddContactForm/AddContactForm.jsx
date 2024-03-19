@@ -4,7 +4,7 @@ import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
 import Notiflix from 'notiflix';
 import * as Yup from 'yup';
-import css from './ContactForm.module.css';
+import css from './AddContactForm.module.css';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 
@@ -26,10 +26,7 @@ export const ContactForm = () => {
       ({ name }) => name.toLowerCase() === values.name.toLowerCase()
     );
     if (isInContacts) {
-      Notiflix.Notify.failure(`${values.name} is already in contacts!`, {
-        position: 'left-top',
-        distance: '10px',
-      });
+      Notiflix.Notify.failure(`${values.name} is already in contacts!`);
       return;
     }
     dispatch(
@@ -40,6 +37,7 @@ export const ContactForm = () => {
       })
     );
     resetForm();
+    Notiflix.Notify.success('Contact is added to the phonebook');
   };
 
   return (

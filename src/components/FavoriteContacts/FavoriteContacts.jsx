@@ -3,37 +3,64 @@ import { FaStar } from 'react-icons/fa';
 import { SlPencil } from 'react-icons/sl';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, editContactStatus } from 'redux/contacts/operations';
-import { selectFavoriteContacts } from 'redux/contacts/selectors';
+import { selectFavoriteFilteredContacts } from 'redux/contacts/selectors';
 import { selectContacts } from 'redux/contacts/selectors';
 import css from './FavoriteContacts.module.css';
 import { useState } from 'react';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
 import img from './contact.jpg';
 import { EditContactModal } from 'components/EditContactModal/EditContactModal';
+import Notiflix from 'notiflix';
 
 export function FavoriteContacts() {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
   const [currentContact, setCurrentContact] = useState({});
-  const favoriteContacts = useSelector(selectFavoriteContacts);
+  const favoriteFilteredContacts = useSelector(selectFavoriteFilteredContacts);
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleDeleteContact = id => {
-    dispatch(deleteContact(id));
+    Notiflix.Confirm.show(
+      'Delete a contact',
+      'Are you sure you want to remove this contact from the phonebook?',
+      'Yes',
+      'No',
+      function () {
+        dispatch(deleteContact(id));
+        Notiflix.Notify.success('Contact deleted successfully!');
+      },
+      function () {
+        return;
+      }
+    );
   };
 
   const handleOpenAddModal = () => {
     setIsOpenAddModal(!isOpenAddModal);
   };
+
   const handleOpenEditModal = contact => {
     setIsOpenEditModal(!isOpenEditModal);
     setCurrentContact(contact);
   };
 
   const handleChangeStatus = _id => {
-    const editedContactStatus = { favorite: true };
-    dispatch(editContactStatus({ _id, editedContactStatus }));
+    const editedContactStatus = { favorite: false };
+
+    Notiflix.Confirm.show(
+      'Remove from favorites',
+      'Are you sure you want to remove the contact from your favorites?',
+      'Yes',
+      'No',
+      function () {
+        dispatch(editContactStatus({ _id, editedContactStatus }));
+        Notiflix.Notify.success('Contact deleted from favorites!');
+      },
+      function () {
+        return;
+      }
+    );
   };
 
   return (
@@ -46,7 +73,7 @@ export function FavoriteContacts() {
         </div>
       ) : (
         <ul className={css.contactList}>
-          {favoriteContacts.map(({ _id, name, phone, email }) => (
+          {favoriteFilteredContacts.map(({ _id, name, phone, email }) => (
             <li className={css.contactItem} key={_id}>
               <div className={css.imgNameWrapp}>
                 <img className={css.image} src={img} alt={name} />
@@ -68,7 +95,9 @@ export function FavoriteContacts() {
                 <li className={css.iconItem}>
                   <button
                     className={css.editBtn}
-                    onClick={() => handleOpenEditModal(_id)}
+                    onClick={() =>
+                      handleOpenEditModal({ _id, name, phone, email })
+                    }
                     name="edit"
                     type="button"
                   >
@@ -96,15 +125,15 @@ export function FavoriteContacts() {
                   </button>
                 </li>
               </ul>
-              {isOpenEditModal && (
-                <EditContactModal
-                  contactInfo={currentContact}
-                  onClose={handleOpenEditModal}
-                />
-              )}
             </li>
           ))}
         </ul>
+      )}
+      {isOpenEditModal && (
+        <EditContactModal
+          contactInfo={currentContact}
+          onClose={handleOpenEditModal}
+        />
       )}
       {isOpenAddModal && <AddContactModal onClose={handleOpenAddModal} />}
     </>

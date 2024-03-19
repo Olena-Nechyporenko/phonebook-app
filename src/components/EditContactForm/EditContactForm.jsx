@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { editContact } from 'redux/contacts/operations';
 import * as Yup from 'yup';
 import css from './EditContactForm.module.css';
+import Notiflix from 'notiflix';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 
@@ -15,13 +16,10 @@ const schema = Yup.object().shape({
 });
 
 export const EditContactForm = ({ contactInfo, onClose }) => {
-  const { _id, name, phone, email } = contactInfo.currentContact;
+  const { _id, name, phone, email } = contactInfo;
 
   const initialValues = { name: name, phone: phone, email: email };
   const dispatch = useDispatch();
-
-  // const cont = useSelector(selectContacts);
-  // console.log(cont);
 
   const handleSubmit = (values, { resetForm }) => {
     const editedContact = {
@@ -31,6 +29,7 @@ export const EditContactForm = ({ contactInfo, onClose }) => {
     };
     dispatch(editContact({ _id, editedContact }));
     onClose();
+    Notiflix.Notify.success('The contact has been edited');
   };
 
   return (

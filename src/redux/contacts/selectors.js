@@ -23,3 +23,13 @@ export const selectFavoriteContacts = createSelector(
     return items.filter(({ favorite }) => favorite === true);
   }
 );
+
+export const selectFavoriteFilteredContacts = createSelector(
+  [selectFilter, selectFavoriteContacts],
+  (savedFilter, items) => {
+    const normalizedFilter = savedFilter.toLowerCase();
+    return items.filter(({ name }) =>
+      name.toLowerCase().includes(normalizedFilter)
+    );
+  }
+);

@@ -34,19 +34,24 @@
   padding: 10px 0;
 }
 
-.icon {
+.asideIcon {
   width: 28px;
   height: 28px;
   fill: azure;
 }
 .contactsWrap {
+  position: relative;
   width: 950px;
   border-top: 1px solid rgba(200, 134, 255, 0.66);
 }
 
 .addContactBtn {
+  font-family: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 8px 10px;
-  width: 150px;
+  width: 160px;
   height: 40px;
   font-size: 20px;
   font-weight: 500;
@@ -61,6 +66,10 @@
 .addContactBtn:hover,
 .addContactBtn:focus {
   font-weight: 600;
+}
+
+.iconPlus {
+  fill: white;
 }
 
 .filterWrapper {

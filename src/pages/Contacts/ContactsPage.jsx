@@ -1,9 +1,9 @@
 import { MdContacts } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
+import { FaPlus } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Filter } from 'components/Filter/Filter';
-// import { ContactList } from 'components/ContactList/ContactList';
 import { fetchContacts } from 'redux/contacts/operations';
 import { selectError } from 'redux/contacts/selectors';
 import css from './ContactsPage.module.css';
@@ -15,6 +15,7 @@ export default function ContactsPage() {
   const dispatch = useDispatch();
 
   const error = useSelector(selectError);
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
@@ -28,13 +29,13 @@ export default function ContactsPage() {
       <aside className={css.aside}>
         <ul className={css.list}>
           <li className={css.item}>
-            <MdContacts className={css.icon} />
+            <MdContacts className={css.asideIcon} />
             <Link to="all" className={css.button}>
               All Contacts
             </Link>
           </li>
           <li className={css.item}>
-            <FaStar className={css.icon} />
+            <FaStar className={css.asideIcon} />
             <Link to="favorite" className={css.button}>
               My Favorites
             </Link>
@@ -43,6 +44,7 @@ export default function ContactsPage() {
       </aside>
       <div className={css.contactsWrap}>
         {error && <b>{error}</b>}
+
         <div className={css.filterWrapper}>
           <Filter />
           <button
@@ -51,10 +53,10 @@ export default function ContactsPage() {
             type="button"
           >
             Add contact
+            <FaPlus className={css.iconPlus} />
           </button>
         </div>
         <Outlet />
-        {/* <ContactList /> */}
       </div>
 
       {openModal && <AddContactModal onClose={handleOpenModal} />}

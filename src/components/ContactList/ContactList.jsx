@@ -1,3 +1,4 @@
+import Notiflix from 'notiflix';
 import { MdDelete } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 import { SlPencil } from 'react-icons/sl';
@@ -27,7 +28,19 @@ export function ContactList() {
     inFavorite.some(favoriteContact => favoriteContact._id === _id);
 
   const handleDeleteContact = id => {
-    dispatch(deleteContact(id));
+    Notiflix.Confirm.show(
+      'Delete a contact',
+      'Are you sure you want to remove this contact from the phonebook?',
+      'Yes',
+      'No',
+      function () {
+        dispatch(deleteContact(id));
+        Notiflix.Notify.success('Contact deleted successfully!');
+      },
+      function () {
+        return;
+      }
+    );
   };
 
   const handleOpenAddModal = () => {
@@ -39,8 +52,16 @@ export function ContactList() {
   };
 
   const handleChangeStatus = _id => {
-    const editedContactStatus = { favorite: true };
-    dispatch(editContactStatus({ _id, editedContactStatus }));
+    const editedContactStatus = { favorite: false };
+    const contactIndex = inFavorite.findIndex(contact => contact._id === _id);
+    if (contactIndex !== -1) {
+      dispatch(editContactStatus({ _id, editedContactStatus }));
+      Notiflix.Notify.success('Contact deleted from favorites');
+    } else {
+      editedContactStatus.favorite = true;
+      dispatch(editContactStatus({ _id, editedContactStatus }));
+      Notiflix.Notify.success('Contact added to favorites');
+    }
   };
 
   return (
@@ -115,15 +136,15 @@ export function ContactList() {
                   </button>
                 </li>
               </ul>
-              {isOpenEditModal && (
-                <EditContactModal
-                  contactInfo={{ currentContact }}
-                  onClose={handleOpenEditModal}
-                />
-              )}
             </li>
           ))}
         </ul>
+      )}
+      {isOpenEditModal && (
+        <EditContactModal
+          contactInfo={currentContact}
+          onClose={handleOpenEditModal}
+        />
       )}
       {isOpenAddModal && <AddContactModal onClose={handleOpenAddModal} />}
     </>
