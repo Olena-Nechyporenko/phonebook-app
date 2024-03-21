@@ -7,7 +7,7 @@ import css from './LoginForm.module.css';
 const initialValues = { email: '', password: '' };
 const schema = Yup.object().shape({
   email: Yup.string().email(),
-  password: Yup.string().min(5, 'Too short password!'),
+  password: Yup.string().min(5, 'too short password'),
 });
 
 export const LoginForm = () => {

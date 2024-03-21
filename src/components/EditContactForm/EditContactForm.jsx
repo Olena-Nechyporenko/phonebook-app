@@ -9,9 +9,9 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 
 const schema = Yup.object().shape({
   name: Yup.string()
-    .min(2, 'Must be at least 2 characters long')
-    .max(30, 'Must be no more than 30 characters long'),
-  email: Yup.string().matches(emailRegex, 'Invalid email format').required(),
+    .min(2, 'must be at least 2 characters long')
+    .max(30, 'must be no more than 30 characters long'),
+  email: Yup.string().matches(emailRegex, 'invalid email format').required(),
   phone: Yup.string().required().typeError('field can only contain numbers'),
 });
 
@@ -21,7 +21,7 @@ export const EditContactForm = ({ contactInfo, onClose }) => {
   const initialValues = { name: name, phone: phone, email: email };
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = values => {
     const editedContact = {
       name: values.name,
       phone: values.phone,

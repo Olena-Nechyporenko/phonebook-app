@@ -11,9 +11,9 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 const initialValues = { name: '', phone: '', email: '' };
 const schema = Yup.object().shape({
   name: Yup.string()
-    .min(2, 'Must be at least 2 characters long')
-    .max(30, 'Must be no more than 30 characters long'),
-  email: Yup.string().matches(emailRegex, 'Invalid email format').required(),
+    .min(2, 'must be at least 2 characters long')
+    .max(30, 'must be no more than 30 characters long'),
+  email: Yup.string().matches(emailRegex, 'invalid email format').required(),
   phone: Yup.string().required().typeError('field can only contain numbers'),
 });
 

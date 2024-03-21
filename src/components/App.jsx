@@ -9,12 +9,12 @@ import { PrivateRoute } from './PrivateRout';
 import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
 import { ContactList } from './ContactList/ContactList';
 import { FavoriteContacts } from './FavoriteContacts/FavoriteContacts';
+import { Loader } from './Loader/Loader';
 const HomePage = lazy(() => import('pages/Home/HomePage'));
 const ContactsPage = lazy(() => import('pages/Contacts/ContactsPage'));
 const LoginPage = lazy(() => import('pages/Login/LoginPage'));
 const RegisterPage = lazy(() => import('pages/Register/RegisterPage'));
 
-//   APP
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -24,7 +24,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'Refreshing user...'
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

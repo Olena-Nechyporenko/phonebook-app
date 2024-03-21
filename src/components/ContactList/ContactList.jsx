@@ -67,18 +67,9 @@ export function ContactList() {
   return (
     <>
       {contacts.length === 0 ? (
-        <div>
-          <p className={css.noContact}>
-            You have no contacts in the phonebook yet
-          </p>
-          <button
-            onClick={handleOpenAddModal}
-            className={css.addFirstContact}
-            type="button"
-          >
-            Add first contact
-          </button>
-        </div>
+        <p className={css.emptyListText}>
+          You have no contacts in the phonebook yet. Add your first contact.
+        </p>
       ) : (
         <ul className={css.contactList}>
           {filteredContacts.map(({ _id, name, phone, email }) => (
@@ -120,8 +111,8 @@ export function ContactList() {
                     type="button"
                   >
                     <FaStar
-                      className={css.starIcon}
-                      style={{ fill: isFavorite(_id) ? 'yellow' : 'white' }}
+                      className={css.favoriteIcon}
+                      style={{ fill: isFavorite(_id) ? '#ffff00' : '#f4efff' }}
                     />
                   </button>
                 </li>

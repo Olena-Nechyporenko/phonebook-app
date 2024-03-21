@@ -8,7 +8,7 @@ const initialValues = { username: '', email: '', password: '' };
 const schema = Yup.object().shape({
   username: Yup.string(),
   email: Yup.string().email(),
-  password: Yup.string().min(7, 'Too short password!'),
+  password: Yup.string().min(7, 'too short password'),
 });
 
 export const RegisterForm = () => {

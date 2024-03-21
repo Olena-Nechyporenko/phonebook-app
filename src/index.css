@@ -1,18 +1,22 @@
 @import-normalize;
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #111111;
+:root {
+  --accent-color: #6938ce;
+  --secondary-accent-color: rgba(200, 134, 255, 0.66);
+  --main-light-color: #f4efff;
+  --secondary-background-color: #181818;
+  --gradient-background: linear-gradient(
+    90deg,
+    rgba(200, 134, 255, 0.66) 31%,
+    rgba(105, 56, 206, 0.59) 100%
+  );
+  --main-transition: 300ms linear;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  font-family: 'Farro', sans-serif;
+  background-color: #111111;
 }
 
 ul {

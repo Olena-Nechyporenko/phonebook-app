@@ -30,13 +30,13 @@ export default function ContactsPage() {
         <ul className={css.list}>
           <li className={css.item}>
             <MdContacts className={css.asideIcon} />
-            <Link to="all" className={css.button}>
+            <Link to="all" className={css.link}>
               All Contacts
             </Link>
           </li>
           <li className={css.item}>
             <FaStar className={css.asideIcon} />
-            <Link to="favorite" className={css.button}>
+            <Link to="favorite" className={css.link}>
               My Favorites
             </Link>
           </li>

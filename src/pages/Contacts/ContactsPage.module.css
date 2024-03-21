@@ -1,17 +1,18 @@
 .section {
-  padding: 20px 10px;
+  padding: 10px;
   display: flex;
+  flex-direction: column;
   height: 600px;
 }
 
 .aside {
-  background-color: #181818;
-  width: 200px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .list {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 15px;
   padding: 0;
 }
@@ -20,61 +21,111 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background-color: rgba(200, 134, 255, 0.66);
+  background-color: var(--secondary-accent-color);
   padding: 0 10px;
 }
 
-.button {
+.link {
   font-family: inherit;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   border: none;
   background-color: transparent;
-  color: #f4efff;
+  color: var(--main-light-color);
   padding: 10px 0;
 }
 
 .asideIcon {
   width: 28px;
   height: 28px;
-  fill: azure;
+  fill: var(--main-light-color);
 }
+
 .contactsWrap {
   position: relative;
-  width: 950px;
-  border-top: 1px solid rgba(200, 134, 255, 0.66);
-}
-
-.addContactBtn {
-  font-family: inherit;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 10px;
-  width: 160px;
-  height: 40px;
-  font-size: 20px;
-  font-weight: 500;
-  border-radius: 5px;
-  border: none;
-  color: #f4efff;
-  background-color: rgba(200, 134, 255, 0.66);
-  cursor: pointer;
-  transition: all 300ms linear;
-}
-
-.addContactBtn:hover,
-.addContactBtn:focus {
-  font-weight: 600;
-}
-
-.iconPlus {
-  fill: white;
+  border-top: 1px solid var(--secondary-accent-color);
 }
 
 .filterWrapper {
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
+  gap: 10px;
   margin-bottom: 15px;
+}
+
+.addContactBtn {
+  font-size: 15px;
+  font-weight: 400;
+  font-family: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 155px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  color: var(--main-light-color);
+  background-color: var(--secondary-accent-color);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all var(--main-transition);
+}
+
+.addContactBtn:hover,
+.addContactBtn:focus {
+  transform: scale(1.1);
+}
+
+.iconPlus {
+  fill: var(--main-light-color);
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    flex-direction: row;
+    padding: 20px 10px;
+  }
+
+  .aside {
+    background-color: var(--secondary-background-color);
+    width: 200px;
+    margin-bottom: 0;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 0;
+  }
+
+  .link {
+    font-size: 20px;
+  }
+
+  .contactsWrap {
+    width: 520px;
+  }
+
+  .filterWrapper {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .addContactBtn {
+    width: 150px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .contactsWrap {
+    width: 950px;
+  }
+
+  .addContactBtn {
+    font-size: 18px;
+    width: 150px;
+    height: 35px;
+  }
 }

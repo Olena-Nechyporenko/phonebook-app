@@ -13,8 +13,8 @@ export function Filter() {
   }
   return (
     <div className={css.filterWrap}>
-      <div className={css.inputWrap}>
-        <p className={css.filterText}>Find contacts by name</p>
+      <div>
+        <p className={css.filterTitle}>Find contacts by name</p>
         <input
           className={css.filterInput}
           type="text"

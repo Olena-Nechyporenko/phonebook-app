@@ -1,5 +1,6 @@
-.wrapper {
+.section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -10,13 +11,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 500px;
-  color: #f4efff;
-  background: linear-gradient(
-    90deg,
-    rgba(200, 134, 255, 0.66) 31%,
-    rgba(105, 56, 206, 0.59) 100%
-  );
-  border-radius: 14px 0 0 14px;
+  width: 340px;
+  height: 70px;
+  color: var(--main-light-color);
+  background: var(--gradient-background);
+  border-radius: 14px 14px 0 0;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    flex-direction: row;
+  }
+
+  .login {
+    width: 200px;
+    height: 500px;
+    border-radius: 14px 0 0 14px;
+  }
 }
