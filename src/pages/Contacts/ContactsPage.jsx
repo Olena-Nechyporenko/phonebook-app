@@ -8,7 +8,7 @@ import { fetchContacts } from 'redux/contacts/operations';
 import { selectError } from 'redux/contacts/selectors';
 import css from './ContactsPage.module.css';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 export default function ContactsPage() {
   const [openModal, setOpenModal] = useState(false);
@@ -29,16 +29,16 @@ export default function ContactsPage() {
       <aside className={css.aside}>
         <ul className={css.list}>
           <li className={css.item}>
-            <MdContacts className={css.asideIcon} />
-            <Link to="all" className={css.link}>
+            <NavLink to="all" className={css.link}>
+              <MdContacts className={css.asideIcon} />
               All Contacts
-            </Link>
+            </NavLink>
           </li>
           <li className={css.item}>
-            <FaStar className={css.asideIcon} />
-            <Link to="favorite" className={css.link}>
+            <NavLink to="favorite" className={css.link}>
+              <FaStar className={css.asideIcon} />
               My Favorites
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </aside>

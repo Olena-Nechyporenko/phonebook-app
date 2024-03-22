@@ -1,23 +1,24 @@
 import { MdDelete } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 import { SlPencil } from 'react-icons/sl';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, editContactStatus } from 'redux/contacts/operations';
 import { selectFavoriteFilteredContacts } from 'redux/contacts/selectors';
-import { selectContacts } from 'redux/contacts/selectors';
 import css from './FavoriteContacts.module.css';
 import { useState } from 'react';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
 import img from './contact.jpg';
 import { EditContactModal } from 'components/EditContactModal/EditContactModal';
 import Notiflix from 'notiflix';
+import { ContactInfoModal } from 'components/ContactInfoModal/ContactInfoModal';
 
 export function FavoriteContacts() {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  const [isOpenContactInfoModal, setIsOpenContactInfoMadal] = useState(false);
   const [currentContact, setCurrentContact] = useState({});
   const favoriteFilteredContacts = useSelector(selectFavoriteFilteredContacts);
-  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleDeleteContact = id => {
@@ -32,6 +33,10 @@ export function FavoriteContacts() {
       },
       function () {
         return;
+      },
+      {
+        titleColor: '#6938ce',
+        okButtonBackground: '#6938ce',
       }
     );
   };
@@ -42,6 +47,11 @@ export function FavoriteContacts() {
 
   const handleOpenEditModal = contact => {
     setIsOpenEditModal(!isOpenEditModal);
+    setCurrentContact(contact);
+  };
+
+  const handleOpenContactInfoModal = contact => {
+    setIsOpenContactInfoMadal(!isOpenContactInfoModal);
     setCurrentContact(contact);
   };
 
@@ -59,15 +69,19 @@ export function FavoriteContacts() {
       },
       function () {
         return;
+      },
+      {
+        titleColor: '#6938ce',
+        okButtonBackground: '#6938ce',
       }
     );
   };
 
   return (
     <>
-      {contacts.length === 0 ? (
+      {favoriteFilteredContacts.length === 0 ? (
         <div>
-          <p className={css.noContact}>
+          <p className={css.emptyListText}>
             You have no favorite contacts in the phonebook yet
           </p>
         </div>
@@ -92,6 +106,18 @@ export function FavoriteContacts() {
               </ul>
 
               <ul className={css.iconList}>
+                <li className={css.iconMoreInfoItem}>
+                  <button
+                    className={css.moreInfoBtn}
+                    onClick={() =>
+                      handleOpenContactInfoModal({ name, email, phone })
+                    }
+                    name="moreInfo"
+                    type="button"
+                  >
+                    <BsThreeDotsVertical className={css.moreInfoIcon} />
+                  </button>
+                </li>
                 <li className={css.iconItem}>
                   <button
                     className={css.editBtn}
@@ -111,7 +137,7 @@ export function FavoriteContacts() {
                     name="favorite"
                     type="button"
                   >
-                    <FaStar className={css.starIcon} />
+                    <FaStar className={css.favoriteIcon} />
                   </button>
                 </li>
                 <li className={css.iconItem}>
@@ -133,6 +159,12 @@ export function FavoriteContacts() {
         <EditContactModal
           contactInfo={currentContact}
           onClose={handleOpenEditModal}
+        />
+      )}
+      {isOpenContactInfoModal && (
+        <ContactInfoModal
+          contactInfo={currentContact}
+          onClose={handleOpenContactInfoModal}
         />
       )}
       {isOpenAddModal && <AddContactModal onClose={handleOpenAddModal} />}

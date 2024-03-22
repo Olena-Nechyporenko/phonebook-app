@@ -2,6 +2,7 @@ import Notiflix from 'notiflix';
 import { MdDelete } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 import { SlPencil } from 'react-icons/sl';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, editContactStatus } from 'redux/contacts/operations';
 import {
@@ -14,10 +15,12 @@ import { useState } from 'react';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
 import img from './contact.jpg';
 import { EditContactModal } from 'components/EditContactModal/EditContactModal';
+import { ContactInfoModal } from 'components/ContactInfoModal/ContactInfoModal';
 
 export function ContactList() {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);
   const [isOpenEditModal, setIsOpenEditModal] = useState(false);
+  const [isOpenContactInfoModal, setIsOpenContactInfoMadal] = useState(false);
   const [currentContact, setCurrentContact] = useState({});
   const filteredContacts = useSelector(selectFilteredContacts);
   const inFavorite = useSelector(selectFavoriteContacts);
@@ -33,12 +36,17 @@ export function ContactList() {
       'Are you sure you want to remove this contact from the phonebook?',
       'Yes',
       'No',
+
       function () {
         dispatch(deleteContact(id));
         Notiflix.Notify.success('Contact deleted successfully!');
       },
       function () {
         return;
+      },
+      {
+        titleColor: '#6938ce',
+        okButtonBackground: '#6938ce',
       }
     );
   };
@@ -48,6 +56,10 @@ export function ContactList() {
   };
   const handleOpenEditModal = contact => {
     setIsOpenEditModal(!isOpenEditModal);
+    setCurrentContact(contact);
+  };
+  const handleOpenContactInfoModal = contact => {
+    setIsOpenContactInfoMadal(!isOpenContactInfoModal);
     setCurrentContact(contact);
   };
 
@@ -91,6 +103,18 @@ export function ContactList() {
               </ul>
 
               <ul className={css.iconList}>
+                <li className={css.iconMoreInfoItem}>
+                  <button
+                    className={css.moreInfoBtn}
+                    onClick={() =>
+                      handleOpenContactInfoModal({ name, email, phone })
+                    }
+                    name="moreInfo"
+                    type="button"
+                  >
+                    <BsThreeDotsVertical className={css.moreInfoIcon} />
+                  </button>
+                </li>
                 <li className={css.iconItem}>
                   <button
                     className={css.editBtn}
@@ -135,6 +159,12 @@ export function ContactList() {
         <EditContactModal
           contactInfo={currentContact}
           onClose={handleOpenEditModal}
+        />
+      )}
+      {isOpenContactInfoModal && (
+        <ContactInfoModal
+          contactInfo={currentContact}
+          onClose={handleOpenContactInfoModal}
         />
       )}
       {isOpenAddModal && <AddContactModal onClose={handleOpenAddModal} />}

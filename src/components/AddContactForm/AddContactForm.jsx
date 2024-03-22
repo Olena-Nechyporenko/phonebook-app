@@ -12,7 +12,7 @@ const initialValues = { name: '', phone: '', email: '' };
 const schema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'must be at least 2 characters long')
-    .max(30, 'must be no more than 30 characters long'),
+    .max(20, 'must be no more than 20 characters long'),
   email: Yup.string().matches(emailRegex, 'invalid email format').required(),
   phone: Yup.string().required().typeError('field can only contain numbers'),
 });

@@ -17,12 +17,13 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  width: 330px;
+  width: 300px;
+  height: 200px;
   overflow: auto;
   background-color: var(--secondary-background-color);
   border: 1px solid var(--secondary-accent-color);
   border-radius: 14px;
-  padding: 25px 10px;
+  padding: 20px;
 }
 .closeBtn {
   position: absolute;
@@ -70,9 +71,28 @@
   height: 60px;
 }
 
-@media screen and (min-width: 768px) {
-  .modalContainer {
-    width: 390px;
-    padding: 30px 20px;
-  }
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.infoItem {
+  display: flex;
+  gap: 15px;
+  padding-left: 10px;
+}
+
+.descrName {
+  font-size: 18px;
+  font-weight: 400;
+  width: 66px;
+  color: var(--secondary-accent-color);
+}
+
+.description {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--main-light-color);
 }

@@ -18,21 +18,28 @@
 }
 
 .item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   background-color: var(--secondary-accent-color);
-  padding: 0 10px;
+  padding: 10px;
 }
 
 .link {
   font-family: inherit;
   font-size: 15px;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   border: none;
   background-color: transparent;
   color: var(--main-light-color);
-  padding: 10px 0;
+
+  :global &.active {
+    color: var(--accent-color);
+
+    .asideIcon {
+      fill: var(--accent-color);
+    }
+  }
 }
 
 .asideIcon {
