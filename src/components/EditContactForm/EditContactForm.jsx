@@ -1,9 +1,9 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { editContact } from 'redux/contacts/operations';
 import * as Yup from 'yup';
-import css from './EditContactForm.module.css';
 import Notiflix from 'notiflix';
+import css from './EditContactForm.module.css';
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.(com|net|ua)$/i;
 

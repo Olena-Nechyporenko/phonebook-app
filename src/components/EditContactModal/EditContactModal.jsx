@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { IoIosContact } from 'react-icons/io';
-import css from './EditContactModal.module.css';
-import { useEffect } from 'react';
 import { EditContactForm } from 'components/EditContactForm/EditContactForm';
+import css from './EditContactModal.module.css';
 
 export function EditContactModal({ onClose, contactInfo }) {
   useEffect(() => {

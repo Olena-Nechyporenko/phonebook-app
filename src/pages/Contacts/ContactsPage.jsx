@@ -1,14 +1,14 @@
+import { useEffect, useState } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdContacts } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 import { FaPlus } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { Filter } from 'components/Filter/Filter';
-import { fetchContacts } from 'redux/contacts/operations';
 import { selectError } from 'redux/contacts/selectors';
-import css from './ContactsPage.module.css';
+import { fetchContacts } from 'redux/contacts/operations';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
-import { NavLink, Outlet } from 'react-router-dom';
+import css from './ContactsPage.module.css';
 
 export default function ContactsPage() {
   const [openModal, setOpenModal] = useState(false);

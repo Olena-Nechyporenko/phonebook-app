@@ -1,17 +1,17 @@
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdDelete } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 import { SlPencil } from 'react-icons/sl';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, editContactStatus } from 'redux/contacts/operations';
 import { selectFavoriteFilteredContacts } from 'redux/contacts/selectors';
-import css from './FavoriteContacts.module.css';
-import { useState } from 'react';
 import { AddContactModal } from 'components/AddContactModal/AddContactModal';
-import img from './contact.jpg';
 import { EditContactModal } from 'components/EditContactModal/EditContactModal';
-import Notiflix from 'notiflix';
 import { ContactInfoModal } from 'components/ContactInfoModal/ContactInfoModal';
+import Notiflix from 'notiflix';
+import img from './contact.jpg';
+import css from './FavoriteContacts.module.css';
 
 export function FavoriteContacts() {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);

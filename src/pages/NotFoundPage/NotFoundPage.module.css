@@ -1,0 +1,22 @@
+.container {
+  font-size: 25px;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  height: 100vh;
+  color: #686868;
+}
+
+.link {
+  margin-left: 10px;
+  color: var(--secondary-accent-color);
+}
+
+.icon {
+  width: 200px;
+  height: 200px;
+  stroke: #686868;
+}

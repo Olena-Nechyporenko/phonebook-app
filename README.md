@@ -1,12 +1,14 @@
 # Phonebook App
 
+![Phonebook](/assets/contacts.png) _Contact list_
+
 ## Features
 
 1. User Registration and Authentication
 2. Private routes and Restricted routes, navigation
-3. Adding and deleting contacts
+3. Adding, editing and deleting contacts
 4. Search for necessary contacts in the list using a filter
-5. Storing contacts in local storage is implemented through Redux Persist
+5. Adding contacts to "Favorites" list
 
 ## Technologies Used
 
@@ -52,3 +54,5 @@ npm start
 ```
 
 ### 4. Open [this link](https://olena-nechyporenko.github.io/phonebook-app/) to view it in the browser.
+
+### 5. You can view the backend at [this link](https://github.com/Olena-Nechyporenko/contact-book-express-js).

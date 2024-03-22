@@ -1,21 +1,21 @@
-import Notiflix from 'notiflix';
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdDelete } from 'react-icons/md';
 import { FaStar } from 'react-icons/fa';
 import { SlPencil } from 'react-icons/sl';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import { useSelector, useDispatch } from 'react-redux';
+import { selectContacts } from 'redux/contacts/selectors';
 import { deleteContact, editContactStatus } from 'redux/contacts/operations';
+import { AddContactModal } from 'components/AddContactModal/AddContactModal';
+import { EditContactModal } from 'components/EditContactModal/EditContactModal';
+import { ContactInfoModal } from 'components/ContactInfoModal/ContactInfoModal';
 import {
   selectFavoriteContacts,
   selectFilteredContacts,
 } from 'redux/contacts/selectors';
-import { selectContacts } from 'redux/contacts/selectors';
-import css from './ContactList.module.css';
-import { useState } from 'react';
-import { AddContactModal } from 'components/AddContactModal/AddContactModal';
+import Notiflix from 'notiflix';
 import img from './contact.jpg';
-import { EditContactModal } from 'components/EditContactModal/EditContactModal';
-import { ContactInfoModal } from 'components/ContactInfoModal/ContactInfoModal';
+import css from './ContactList.module.css';
 
 export function ContactList() {
   const [isOpenAddModal, setIsOpenAddModal] = useState(false);

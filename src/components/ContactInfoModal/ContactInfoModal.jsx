@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
 import { IoMdClose } from 'react-icons/io';
 import { IoIosContact } from 'react-icons/io';
 import css from './ContactInfoModal.module.css';
-import { useEffect } from 'react';
 
 export function ContactInfoModal({ contactInfo, onClose }) {
   const { name, email, phone } = contactInfo;
