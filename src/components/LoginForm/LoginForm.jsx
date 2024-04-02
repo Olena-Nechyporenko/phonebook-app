@@ -4,10 +4,12 @@ import { userLogin } from 'redux/auth/operations';
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
 
+const emailRegexp = /^[a-zA-Z][0-9a-zA-Z_]{2,21}@[a-zA-Z]{2,12}.[a-zA-Z]{2,12}/;
+
 const initialValues = { email: '', password: '' };
 const schema = Yup.object().shape({
-  email: Yup.string().email(),
-  password: Yup.string().min(5, 'too short password'),
+  email: Yup.string().matches(emailRegexp, 'Invalid email format').required(),
+  password: Yup.string().min(7, 'too short password').required(),
 });
 
 export const LoginForm = () => {
