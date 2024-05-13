@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://contact-book-express-js.onrender.com/api/';
@@ -16,6 +17,9 @@ export const userRegister = createAsyncThunk(
       setAuthHeader(newUser.data.token);
       return newUser.data;
     } catch (e) {
+      Notiflix.Notify.failure(
+        `User with email "${userData.email}" already exists!`
+      );
       return rejectWithValue(e.message);
     }
   }
@@ -29,6 +33,7 @@ export const userLogin = createAsyncThunk(
       setAuthHeader(loginUser.data.token);
       return loginUser.data;
     } catch (e) {
+      Notiflix.Notify.failure(`Email or password is wrong`);
       return rejectWithValue(e.message);
     }
   }
