@@ -255,7 +255,7 @@
   }
 
   .imgNameWrapp {
-    width: 260px;
+    width: 300px;
   }
 
   .image {
@@ -269,16 +269,16 @@
 
   .descrEmailItem {
     font-size: 15px;
-    width: 280px;
+    width: 300px;
   }
 
   .descrPhoneItem {
     font-size: 15px;
-    width: 140px;
+    width: 170px;
   }
 
   .desription {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .iconList {
